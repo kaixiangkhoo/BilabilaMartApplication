@@ -10,6 +10,7 @@ import com.example.bilabilamartapplication.admin.InventoryViewModel
 import com.example.bilabilamartapplication.admin.ProductDetailsViewModel
 import com.example.bilabilamartapplication.admin.ProductEditViewModel
 import com.example.bilabilamartapplication.admin.ProductEntryViewModel
+import com.example.bilabilamartapplication.user.SignUpViewModel
 
 /**
  * Provides Factory to create instance of ViewModel for the entire bilabila mart app
@@ -39,6 +40,11 @@ object AppViewModelProvider {
         // Initializer for InventoryViewModel
         initializer {
             InventoryViewModel(bilabilaMartApplication().container.productsRepository)
+        }
+
+        //User Part
+        initializer {
+            SignUpViewModel(bilabilaMartApplication().userContainer.userRepository)
         }
     }
 }

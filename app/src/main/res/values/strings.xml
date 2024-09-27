@@ -21,4 +21,5 @@
     <string name="yes">Yes</string>
     <string name="required_fields">*required fields</string>
     <string name="userscreen">User Screen</string>
+    <string name="sign_up">Sign In</string>
 </resources>

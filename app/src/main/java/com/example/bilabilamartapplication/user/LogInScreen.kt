@@ -41,7 +41,10 @@ object LogIn : NavigationDestination {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LogInScreen() {
+fun LogInScreen(
+    navigateBack: () -> Unit,
+    navigateToSignUp: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +55,7 @@ fun LogInScreen() {
         // Top bar with time and close button
         TopAppBar(
             actions = {
-                IconButton(onClick = { /* Handle close button click */ }) {
+                IconButton(onClick = { navigateBack() }) {
                     Icon(Icons.Filled.Close, contentDescription = "Close")
                 }
             },
@@ -61,7 +64,6 @@ fun LogInScreen() {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Lotus's logo and text
         Image(
             painter = painterResource(id = R.drawable.bilabila),
             contentDescription = "Lotus's Logo",
@@ -92,7 +94,7 @@ fun LogInScreen() {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             OutlinedTextField(
-                value = "+60", // Use a fixed value for country code
+                value = "+60",
                 onValueChange = { },
                 modifier = Modifier.weight(1f),
                 label = { Text("Country Code") },
@@ -139,7 +141,7 @@ fun LogInScreen() {
 
         // Register link
         TextButton(
-            onClick = { /* Handle register click */ },
+            onClick = {navigateToSignUp()},
             modifier = Modifier.align(Alignment.CenterHorizontally) // Center the button
         ) {
             Text("New customer? Register Now", color = MaterialTheme.colorScheme.primary)
@@ -151,6 +153,9 @@ fun LogInScreen() {
 @Composable
 @Preview(showSystemUi = true)
 fun LoginScreenPreview() {
-    LogInScreen()
+    LogInScreen(
+        navigateBack = {/*Do nothing*/},
+        navigateToSignUp = {/*Do nothing*/}
+    )
 }
 

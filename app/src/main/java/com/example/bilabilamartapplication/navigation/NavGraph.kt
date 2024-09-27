@@ -18,7 +18,10 @@ import com.example.bilabilamartapplication.admin.ProductEntryScreen
 import com.example.bilabilamartapplication.user.EditProfile
 import com.example.bilabilamartapplication.user.EditProfileScreen
 import com.example.bilabilamartapplication.user.LogIn
+import com.example.bilabilamartapplication.user.LogInScreen
 import com.example.bilabilamartapplication.user.ProfileScreen
+import com.example.bilabilamartapplication.user.SignUp
+import com.example.bilabilamartapplication.user.SignUpScreen
 import com.example.bilabilamartapplication.user.UserScreen
 
 @Composable
@@ -34,7 +37,8 @@ fun AppNavHost(
         composable(route = AdminHomeScreen.route){
             AdminHomeScreen(
                 navigateToInventory = { navController.navigate(Inventory.route)},
-                navigateToProfile = { navController.navigate(UserScreen.route)}
+                navigateToProfile = { navController.navigate(UserScreen.route)},
+                navigateToLogIn = { navController.navigate(LogIn.route)}
             )
         }
 
@@ -57,36 +61,6 @@ fun AppNavHost(
                 onNavigateUp = { navController.navigateUp() }
             )
         }
-        
-        //Profile Screen
-        composable(
-            route = UserScreen.route
-        ){
-            ProfileScreen(
-                navigateToEditProfile = {navController.navigate(EditProfile.route)}
-            )
-        }
-
-        //Log In Screen
-        composable(
-            route = LogIn.route
-        ){
-//            EditProfileScreen(
-//                onSaveClick = {navController.navigate(UserScreen.route)},
-//                onNavigateUp = { navController.navigateUp() }
-//            )
-        }
-
-        //Edit Profile Screen
-        composable(
-            route = EditProfile.route
-        ){
-            EditProfileScreen(
-                onSaveClick = {navController.navigate(UserScreen.route)},
-                onNavigateUp = { navController.navigateUp() }
-            )
-        }
-
 
         //
         composable(
@@ -110,6 +84,44 @@ fun AppNavHost(
             ){
             ProductEditScreen(
                 navigateBack = { navController.popBackStack() },
+                onNavigateUp = { navController.navigateUp() }
+            )
+        }
+
+        //Profile Screen
+        composable(
+            route = UserScreen.route
+        ){
+            ProfileScreen(
+                navigateToEditProfile = {navController.navigate(EditProfile.route)}
+            )
+        }
+
+        //Log In Screen
+        composable(
+            route = LogIn.route
+        ){
+            LogInScreen(
+                navigateBack = {navController.popBackStack()},
+                navigateToSignUp = {navController.navigate(SignUp.route)}
+            )
+        }
+
+        //Sign Up Screen
+        composable(
+            route = SignUp.route
+        ){
+            SignUpScreen(
+                navigateBack = {navController.popBackStack()},
+                onNavigateUp = { navController.navigateUp() }
+            )
+        }
+        //Edit Profile Screen
+        composable(
+            route = EditProfile.route
+        ){
+            EditProfileScreen(
+                onSaveClick = {navController.navigate(UserScreen.route)},
                 onNavigateUp = { navController.navigateUp() }
             )
         }

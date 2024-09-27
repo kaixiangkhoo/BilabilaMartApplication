@@ -11,6 +11,7 @@ data class User(
     val name: String = "",
     val lastName: String = "",
     val race: String = "",
+    val dob: String = "",
     val phone: String = "",
     val email: String = "",
     val unit: String = "",
